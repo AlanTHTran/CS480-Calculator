@@ -1,0 +1,12 @@
+This calculator runs through the java coding language. 
+
+To use this calculator, make sure the computer you are using has java installed. 
+
+To run: 
+1. open the cmd prompt 
+2. navigate to where the java file is held
+3. type javac Calculator.java to compile the project 
+4. type java Calculator to run the project itself 
+
+When using: 
+Type in the mathematic expression you want the calculator to solve. Standard arithmatic symbols will work, such as '*', '/', and '^'. For more complex functions, they must be typed out, such as 'sqrt', 'log', 'sin', and 'cot'.
