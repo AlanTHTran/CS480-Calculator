@@ -54,9 +54,9 @@ public class Calculator{
             double parseTerm() {
                 double x = parsePow();
                 for (; ; ) {
-                    if (eat('×')) { //multiplication
+                    if (eat('*')) { //multiplication
                         x *= parsePow();
-                    } else if (eat('÷')) { //division
+                    } else if (eat('/')) { //division
                         x /= parsePow();
                     } else {
                         return x;
@@ -83,7 +83,7 @@ public class Calculator{
                 if (eat('-')) { //unary minus
                     return -parsePow();
                 }
-                double x;
+                double x = 0;
                 int startPos = this.pos;
                 if (eat('(')) { //parentheses
                     x = parseExpression();
@@ -127,6 +127,8 @@ public class Calculator{
                     } else {
                         throw new RuntimeException("Unknown function: " + func);
                     }
+                } else if (str.equalsIgnoreCase("exit")) {
+                    System.exit(0);
                 } else {
                     throw new RuntimeException("Unexpected: " + (char) ch);
                 }
@@ -137,6 +139,18 @@ public class Calculator{
 
     public static void main(String args[])
     {
-        System.out.println(eval("sin ( sqrt (5) ) ^ 2"));
+        Scanner scanner = new Scanner(System.in);
+        String userInput;
+        System.out.println("Hello");
+        do {
+            System.out.println("Please input the expression you would like solved. Or Type 'exit' to close the program.");
+            userInput = scanner.nextLine();
+            try {
+                System.out.println("Answer is:" + eval(userInput));
+            }
+            catch (RuntimeException e) {
+                System.out.println("There seems to be a problem with the expression you put in.");
+            }
+        } while (!userInput.equalsIgnoreCase("exit"));
     }
 }
